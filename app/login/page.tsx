@@ -1,13 +1,13 @@
 
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { Suspense, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Lock, Mail, Shield } from "lucide-react";
 import { useAuth } from "@/app/context/AuthContext";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { login } = useAuth();
@@ -51,7 +51,9 @@ export default function LoginPage() {
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-black text-white">
             <Shield size={24} />
           </div>
+
           <h1 className="text-2xl font-bold">Welcome to Nexus</h1>
+
           <p className="mt-2 text-sm text-gray-500">
             Sign in to your security operations account
           </p>
@@ -65,9 +67,16 @@ export default function LoginPage() {
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
-            <label className="mb-2 block text-sm font-medium">Email</label>
+            <label className="mb-2 block text-sm font-medium">
+              Email
+            </label>
+
             <div className="relative">
-              <Mail size={18} className="absolute left-3 top-3 text-gray-400" />
+              <Mail
+                size={18}
+                className="absolute left-3 top-3 text-gray-400"
+              />
+
               <input
                 type="email"
                 value={email}
@@ -81,9 +90,16 @@ export default function LoginPage() {
           </div>
 
           <div>
-            <label className="mb-2 block text-sm font-medium">Password</label>
+            <label className="mb-2 block text-sm font-medium">
+              Password
+            </label>
+
             <div className="relative">
-              <Lock size={18} className="absolute left-3 top-3 text-gray-400" />
+              <Lock
+                size={18}
+                className="absolute left-3 top-3 text-gray-400"
+              />
+
               <input
                 type="password"
                 value={password}
@@ -106,7 +122,10 @@ export default function LoginPage() {
           </div>
 
           {error && (
-            <p role="alert" className="rounded-lg bg-red-50 p-3 text-sm text-red-600">
+            <p
+              role="alert"
+              className="rounded-lg bg-red-50 p-3 text-sm text-red-600"
+            >
               {error}
             </p>
           )}
@@ -128,5 +147,19 @@ export default function LoginPage() {
         </p>
       </div>
     </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
+          <p className="text-sm text-gray-500">Loading login...</p>
+        </main>
+      }
+    >
+      <LoginForm />
+    </Suspense>
   );
 }
