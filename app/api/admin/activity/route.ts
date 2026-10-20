@@ -40,9 +40,9 @@ export async function GET(request: Request) {
       .limit(limit)
       .offset(offset);
 
-    return json({ activity, limit, offset });
+    return json({ activity, limit, offset }, 200);
   } catch (error) {
-    console.error("GET activity:", error);
+    console.error("GET /api/admin/activity failed:", error);
     return apiError("Could not load activity", 500);
   }
 }

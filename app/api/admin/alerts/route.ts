@@ -17,7 +17,8 @@ export async function GET(request: Request) {
       return auth.response;
     }
 
-    const status = new URL(request.url).searchParams.get("status");
+    const url = new URL(request.url);
+    const status = url.searchParams.get("status");
 
     if (
       status &&
@@ -36,9 +37,9 @@ export async function GET(request: Request) {
       )
       .orderBy(desc(socAlerts.createdAt));
 
-    return json({ alerts });
+    return json({ alerts }, 200);
   } catch (error) {
-    console.error("GET alerts:", error);
+    console.error("GET /api/admin/alerts failed:", error);
     return apiError("Could not load alerts", 500);
   }
 }

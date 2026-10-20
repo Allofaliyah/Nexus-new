@@ -1,4 +1,3 @@
-
 "use client";
 
 import { Suspense, useState, type FormEvent } from "react";
@@ -23,7 +22,8 @@ function LoginForm() {
     setLoading(true);
 
     try {
-      const result = await login(email, password);
+      // AuthContext records failed attempts when login fails.
+      const result = await login(email.trim(), password);
 
       if (result.error) {
         setError(result.error);
@@ -37,7 +37,8 @@ function LoginForm() {
       } else {
         setError("Your account role could not be verified.");
       }
-    } catch {
+    } catch (error) {
+      console.error("Login failed:", error);
       setError("Login failed. Please try again.");
     } finally {
       setLoading(false);
@@ -67,7 +68,11 @@ function LoginForm() {
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
+<<<<<<< HEAD
             <label className="mb-2 block text-sm font-medium">
+=======
+            <label htmlFor="email" className="mb-2 block text-sm font-medium">
+>>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
               Email
             </label>
 
@@ -76,8 +81,12 @@ function LoginForm() {
                 size={18}
                 className="absolute left-3 top-3 text-gray-400"
               />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
               <input
+                id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -90,7 +99,11 @@ function LoginForm() {
           </div>
 
           <div>
+<<<<<<< HEAD
             <label className="mb-2 block text-sm font-medium">
+=======
+            <label htmlFor="password" className="mb-2 block text-sm font-medium">
+>>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
               Password
             </label>
 
@@ -99,8 +112,12 @@ function LoginForm() {
                 size={18}
                 className="absolute left-3 top-3 text-gray-400"
               />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
               <input
+                id="password"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -133,7 +150,7 @@ function LoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-lg bg-black py-3 font-medium text-white hover:bg-gray-800 disabled:opacity-50"
+            className="w-full rounded-lg bg-black py-3 font-medium text-white hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
           >
             {loading ? "Signing in..." : "Sign In"}
           </button>
@@ -154,12 +171,21 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
+<<<<<<< HEAD
         <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
           <p className="text-sm text-gray-500">Loading login...</p>
+=======
+        <main className="flex min-h-screen items-center justify-center bg-gray-50">
+          <p className="text-sm text-gray-500">Loading login page...</p>
+>>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
         </main>
       }
     >
       <LoginForm />
     </Suspense>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2013a80 (Make admin sidebar responsive on mobile)

@@ -1,4 +1,3 @@
-
 import { desc } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { socIncidents } from "@/lib/db/schema";
@@ -18,9 +17,10 @@ export async function GET(request: Request) {
       .from(socIncidents)
       .orderBy(desc(socIncidents.createdAt));
 
-    return json({ incidents });
+    return json({ incidents }, 200);
   } catch (error) {
-    console.error("GET incidents:", error);
+    console.error("GET /api/admin/incidents failed:", error);
+
     return apiError("Could not load incidents", 500);
   }
 }
