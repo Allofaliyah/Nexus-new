@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Suspense, useState, type FormEvent } from "react";
@@ -46,7 +47,7 @@ function LoginForm() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
+    <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-8">
       <div className="w-full max-w-md rounded-2xl border bg-white p-8 shadow-sm">
         <div className="mb-8 text-center">
           <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-black text-white">
@@ -68,23 +69,20 @@ function LoginForm() {
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
-<<<<<<< HEAD
-            <label className="mb-2 block text-sm font-medium">
-=======
-            <label htmlFor="email" className="mb-2 block text-sm font-medium">
->>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
+            <label
+              htmlFor="email"
+              className="mb-2 block text-sm font-medium"
+            >
               Email
             </label>
 
             <div className="relative">
               <Mail
                 size={18}
+                aria-hidden="true"
                 className="absolute left-3 top-3 text-gray-400"
               />
-<<<<<<< HEAD
 
-=======
->>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
               <input
                 id="email"
                 type="email"
@@ -99,23 +97,20 @@ function LoginForm() {
           </div>
 
           <div>
-<<<<<<< HEAD
-            <label className="mb-2 block text-sm font-medium">
-=======
-            <label htmlFor="password" className="mb-2 block text-sm font-medium">
->>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
+            <label
+              htmlFor="password"
+              className="mb-2 block text-sm font-medium"
+            >
               Password
             </label>
 
             <div className="relative">
               <Lock
                 size={18}
+                aria-hidden="true"
                 className="absolute left-3 top-3 text-gray-400"
               />
-<<<<<<< HEAD
 
-=======
->>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
               <input
                 id="password"
                 type="password"
@@ -171,21 +166,12 @@ export default function LoginPage() {
   return (
     <Suspense
       fallback={
-<<<<<<< HEAD
         <main className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
           <p className="text-sm text-gray-500">Loading login...</p>
-=======
-        <main className="flex min-h-screen items-center justify-center bg-gray-50">
-          <p className="text-sm text-gray-500">Loading login page...</p>
->>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
         </main>
       }
     >
       <LoginForm />
     </Suspense>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2013a80 (Make admin sidebar responsive on mobile)
